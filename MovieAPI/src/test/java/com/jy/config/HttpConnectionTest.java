@@ -29,8 +29,15 @@ public class HttpConnectionTest {
 
 	@Test
 	public void testRequest() {
-		String response =  movieAPI_Util.requestAPI_By_Query("테스트");
-		log.info(response);
+		try {
+			movieAPI_Util.setQuery("그놈 목소리");
+			
+			String response =  movieAPI_Util.request();
+			log.info(response);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
 	}
 	
 }
