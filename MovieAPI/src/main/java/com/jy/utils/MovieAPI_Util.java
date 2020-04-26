@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.jy.domain.API_ResponseVO;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,15 +25,16 @@ public class MovieAPI_Util {
 	final private RestTemplate restTemplate;
 	
 	private String query = null;
-	private Integer display;
-	private Integer start;
+	private Integer display = 10;
+	private Integer start = 1;
+	private String genre;
 	
 	@Autowired
 	public MovieAPI_Util(RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
 	}
 	
-	public String request() throws Exception{
+	public ResponseEntity<API_ResponseVO> request() throws Exception{
 		if(query == null) {
 			throw new Exception("request() : setQuery()를 이용해 Query를 먼저 지정해주세요");
 		}
@@ -43,8 +46,7 @@ public class MovieAPI_Util {
 
 		final HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-		ResponseEntity<String> response = restTemplate.exchange(
-				REQUEST_URL + "?query=" + query, HttpMethod.GET, entity, String.class);
-		return response.getBody();
+		return restTemplate.exchange(
+				REQUEST_URL + "?query=" + query + "&start=" + start + "&display=" + display, HttpMethod.GET, entity, API_ResponseVO.class);
 	}
 }
