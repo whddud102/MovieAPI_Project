@@ -22,218 +22,221 @@
 
 <title>영화 정보</title>
 </head>
-  <body>
-  
-    <header>
-      <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-              <h4 class="text-white">About</h4>
-              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-            </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">Contact</h4>
-              <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-      <div class="navbar navbar-dark bg-dark box-shadow">
-        <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <strong>Album</strong>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </div>
-      
-      
-    </header>
+<body>
 
-    <main role="main">
+	<header>
 
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">영화 검색하기</h1>
-          <c:out value="${movie}"></c:out>
-          <div>
-            <input type="text">	
-            <a href="#" class="btn btn-primary my-2">검색</a>
-            </div>
-        </div>
-      </section>
+		<!-- 네비게이션 바 -->
+		<div class="navbar navbar-dark bg-dark box-shadow">
+		
+			<div class="container d-flex justify-content-between">
+			
+				<a href="#" class="navbar-brand d-flex align-items-center"> 
+				<strong	class="mr-3">영화 검색 </strong> 
+				<svg id="i-search"
+						xmlns="http://www.w3.org/2000/svg" 
+						viewBox="0 0 32 32" 
+						width="32"
+						height="32" 
+						fill="none" 
+						stroke="currentcolor"
+						stroke-linecap="round" 
+						stroke-linejoin="round" 
+						stroke-width="2">
+				    <circle cx="14" cy="14" r="12" />
+				    <path d="M23 23 L30 30" />
+				</svg>
 
-      <div class="album py-5 bg-light">
-        <div class="container">
+				</a>
+				<button class="navbar-toggler" type="button"
+					data-toggle="colapse" data-target="#navbarHeader"
+					aria-controls="navbarHeader" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+			
+		</div>
 
-          <div class="row">
-          
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="https://images.immediate.co.uk/production/volatile/sites/23/2019/10/Federico_Veronesi_Lions-cover-image-e359a4e.jpg?webp=true&quality=90&crop=10px%2C234px%2C3691px%2C2458px&resize=620%2C413" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
+	</header>
 
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+	<main role="main">
+		<section class="jumbotron text-center">
+			<div class="container">
+				<h1 class="jumbotron-heading">영화 검색하기</h1>
+					
+					<div class="row mt-4">
+						<div class="col-md-10 mt-2">
+								<input class="form-control form-control-lg" type="text"> 
+						</div>
+						
+						<div class="col-md-2">
+								<a href="#" class="btn btn-primary my-2 btn-block">
+									<svg id="i-search"
+										xmlns="http://www.w3.org/2000/svg" 
+										viewBox="0 0 32 32" 
+										width="32"
+										height="32" 
+										fill="none" 
+										stroke="currentcolor"
+										stroke-linecap="round" 
+										stroke-linejoin="round" 
+										stroke-width="2">
+								    <circle cx="14" cy="14" r="12" />
+								    <path d="M23 23 L30 30" />
+									</svg>
+								</a>
+						</div>
+						
+					</div>
 
-    </main>
+			</div>
+		</section>
 
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
-      </div>
-    </footer>
+		<!-- 결과 출력 영역 -->
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card">
+							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+							<div class="card-body">
+								<h4 class="card-title">
+									<c:out value="${movie.getFormmatedName() }" />
+								</h4>
+								<p class="card-text">
+									<c:out value="${movie.userRating }" />
+								</p>
+							</div>
+						</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="card">
+							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+							<div class="card-body">
+								<h4 class="card-title">
+									<c:out value="${movie.getFormmatedName() }" />
+								</h4>
+								<p class="card-text">
+									<c:out value="${movie.userRating }" />
+								</p>
+							</div>
+						</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="card">
+							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+							<div class="card-body">
+								<h4 class="card-title">
+									<c:out value="${movie.getFormmatedName() }" />
+								</h4>
+								<p class="card-text">
+									<c:out value="${movie.userRating }" />
+								</p>
+							</div>
+						</div>
+				</div>
+			<!-- 
+				<c:forEach var="movie" items="${items}">
+					<div class="col-md-2">
+						<div class="card">
+							<img class="card-img-top img-thumbnail" src="<c:out value ='${movie.image}'/>">
+							<div class="card-body">
+								<h4 class="card-title">
+									<c:out value="${movie.getFormmatedName() }" />
+								</h4>
+								<p class="card-text">
+									<c:out value="${movie.userRating }" />
+								</p>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				 -->
+			<!-- ./row -->
+			</div>
+			
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card">
+							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+							<div class="card-body">
+								<h4 class="card-title">
+									<c:out value="${movie.getFormmatedName() }" />
+								</h4>
+								<p class="card-text">
+									<c:out value="${movie.userRating }" />
+								</p>
+							</div>
+						</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="card">
+							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+							<div class="card-body">
+								<h4 class="card-title">
+									<c:out value="${movie.getFormmatedName() }" />
+								</h4>
+								<p class="card-text">
+									<c:out value="${movie.userRating }" />
+								</p>
+							</div>
+						</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="card">
+							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+							<div class="card-body">
+								<h4 class="card-title">
+									<c:out value="${movie.getFormmatedName() }" />
+								</h4>
+								<p class="card-text">
+									<c:out value="${movie.userRating }" />
+								</p>
+							</div>
+						</div>
+				</div>
+			<!-- 
+				<c:forEach var="movie" items="${items}">
+					<div class="col-md-2">
+						<div class="card">
+							<img class="card-img-top img-thumbnail" src="<c:out value ='${movie.image}'/>">
+							<div class="card-body">
+								<h4 class="card-title">
+									<c:out value="${movie.getFormmatedName() }" />
+								</h4>
+								<p class="card-text">
+									<c:out value="${movie.userRating }" />
+								</p>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				 -->
+			<!-- ./row -->
+			</div>
+		<!-- ./container -->	
+		</div>
+	</main>
+
+	<footer class="text-muted">
+		<div class="container">
+			<p class="float-right">
+				<a href="#">Back to top</a>
+			</p>
+			<p>Album example is &copy; Bootstrap, but please download and
+				customize it for yourself!</p>
+			<p>
+				New to Bootstrap? <a href="../../">Visit the homepage</a> or read
+				our <a href="../../getting-started/">getting started guide</a>.
+			</p>
+		</div>
+	</footer>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
