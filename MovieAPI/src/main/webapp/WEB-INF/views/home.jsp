@@ -67,12 +67,14 @@
 				<h1 class="jumbotron-heading">영화 검색하기</h1>
 					
 					<div class="row mt-4">
-						<div class="col-md-10 mt-2">
-								<input class="form-control form-control-lg" type="text"> 
+						<div class="col-md-10 mt-1">
+							<form id="searchForm" action="#" method="get">
+								<input name="keyword" class="form-control form-control-lg" type="text">
+							</form>
 						</div>
 						
 						<div class="col-md-2">
-								<a href="#" class="btn btn-primary my-2 btn-block">
+							<button id="searchButton" class="btn btn-primary btn-block">
 									<svg id="i-search"
 										xmlns="http://www.w3.org/2000/svg" 
 										viewBox="0 0 32 32" 
@@ -86,7 +88,7 @@
 								    <circle cx="14" cy="14" r="12" />
 								    <path d="M23 23 L30 30" />
 									</svg>
-								</a>
+								</button>
 						</div>
 						
 					</div>
@@ -98,7 +100,7 @@
 		<div class="container">
 
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="card">
 							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
 							<div class="card-body">
@@ -112,7 +114,7 @@
 						</div>
 				</div>
 				
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="card">
 							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
 							<div class="card-body">
@@ -126,19 +128,6 @@
 						</div>
 				</div>
 				
-				<div class="col-md-4">
-					<div class="card">
-							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-							<div class="card-body">
-								<h4 class="card-title">
-									<c:out value="${movie.getFormmatedName() }" />
-								</h4>
-								<p class="card-text">
-									<c:out value="${movie.userRating }" />
-								</p>
-							</div>
-						</div>
-				</div>
 			<!-- 
 				<c:forEach var="movie" items="${items}">
 					<div class="col-md-2">
@@ -159,8 +148,8 @@
 			<!-- ./row -->
 			</div>
 			
-			<div class="row">
-				<div class="col-md-4">
+				<div class="row">
+				<div class="col-md-6">
 					<div class="card">
 							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
 							<div class="card-body">
@@ -174,7 +163,7 @@
 						</div>
 				</div>
 				
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="card">
 							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
 							<div class="card-body">
@@ -187,36 +176,6 @@
 							</div>
 						</div>
 				</div>
-				
-				<div class="col-md-4">
-					<div class="card">
-							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-							<div class="card-body">
-								<h4 class="card-title">
-									<c:out value="${movie.getFormmatedName() }" />
-								</h4>
-								<p class="card-text">
-									<c:out value="${movie.userRating }" />
-								</p>
-							</div>
-						</div>
-				</div>
-			<!-- 
-				<c:forEach var="movie" items="${items}">
-					<div class="col-md-2">
-						<div class="card">
-							<img class="card-img-top img-thumbnail" src="<c:out value ='${movie.image}'/>">
-							<div class="card-body">
-								<h4 class="card-title">
-									<c:out value="${movie.getFormmatedName() }" />
-								</h4>
-								<p class="card-text">
-									<c:out value="${movie.userRating }" />
-								</p>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
 				 -->
 			<!-- ./row -->
 			</div>
@@ -251,5 +210,23 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+		
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			var serachForm = $("#searchForm");
+			
+			$("#searchButton").on("click", function(event) {
+				var val = $("input[name='keyword']").val();
+
+				if(!val) {
+					alert("검색어를 입력해주세요");
+				} else {
+					alert(val)					;
+				}
+			})
+		})
+	
+	</script>
 </body>
 </html>
