@@ -12,4 +12,8 @@ public class MovieVO {
 	private String director;
 	private String actor;
 	private double userRating;
+	
+	public String getFormmatedName() {
+		return getTitle().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+	}
 }
