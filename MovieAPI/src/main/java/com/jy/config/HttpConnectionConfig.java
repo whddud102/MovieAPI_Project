@@ -9,7 +9,6 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@ComponentScan(basePackages = {"com.jy.utils"})
 public class HttpConnectionConfig {
 	
 	@Bean
