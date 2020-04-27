@@ -14,9 +14,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-@Component
+
 @Setter
 @Getter
+@Component
 public class MovieAPI_Util { 
 	
 	final String CLIENT_ID = "cZsMzsNXZCUKChilq1dL";

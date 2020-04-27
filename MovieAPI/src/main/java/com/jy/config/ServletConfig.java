@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.jy.controller"})
 public class ServletConfig implements WebMvcConfigurer{
-
+ 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
@@ -26,5 +26,4 @@ public class ServletConfig implements WebMvcConfigurer{
 		
 		registry.viewResolver(bean);
 	}
-	
 }

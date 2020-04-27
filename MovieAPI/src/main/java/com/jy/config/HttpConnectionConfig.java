@@ -21,7 +21,7 @@ public class HttpConnectionConfig {
 		HttpClient httpClient = HttpClientBuilder.create()
 				.setMaxConnTotal(200)
 				.setMaxConnPerRoute(20)
-				.build();
+				.build(); 
 		
 		httpRequestFactory.setHttpClient(httpClient);
 		return new RestTemplate(httpRequestFactory);
