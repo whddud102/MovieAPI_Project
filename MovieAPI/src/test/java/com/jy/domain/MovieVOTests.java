@@ -37,4 +37,25 @@ public class MovieVOTests {
 		}
 		
 	}
+	
+	@Test
+	public void movieVO_Test() throws Exception {
+		movieAPI_Util.setQuery("토스트");
+		ResponseEntity<API_ResponseVO> response = movieAPI_Util.request();
+		API_ResponseVO api_ResponseVO = response.getBody();
+		
+		List<MovieVO> items =  api_ResponseVO.getItems();
+		
+		for(MovieVO movie : items) {
+			log.info("Name : " + movie.getFormmatedName());
+			log.info("Actor : " + movie.getActor());
+			log.info("Director : " + movie.getDirector());
+			log.info("Image : " + movie.getImage());
+			log.info("PubDate : " + movie.getPubDate());
+			log.info("SubTitle : " + movie.getSubtitle());
+			log.info("UserRating : " + movie.getUserRating());
+			log.info("---------------------------------------------------\n");
+		}
+		
+	}
 }
