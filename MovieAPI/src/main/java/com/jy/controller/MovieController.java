@@ -23,6 +23,8 @@ public class MovieController {
 	
 	@GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<MovieVO> getItems(String query) {
+		log.info("/movie/search : " + query);
+		
 		List<MovieVO> items = movieService.getItems(query);
 		return items;
 	}
