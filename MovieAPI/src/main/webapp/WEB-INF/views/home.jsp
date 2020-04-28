@@ -27,7 +27,7 @@
 	<header>
 
 		<!-- 네비게이션 바 -->
-		<div class="navbar navbar-dark bg-dark box-shadow">
+		<div class="navbar navbar-dark bg-dark box-shadow sticky-top">
 
 			<div class="container d-flex justify-content-between">
 
@@ -169,25 +169,28 @@
 						</div>
 					</div>
 				</div>
-				-->
 				<!-- ./row -->
 			</div>
 			<!-- ./container -->
 		</div>
 	</main>
 
-	<footer class="text-muted">
-		<div class="container">
+	<footer class="text-muted bg-dark">
+		<div class="container pt-3">
 			<p class="float-right">
-				<a href="#">Back to top</a>
+				<a class="text-light" href="#">Back to top</a>
 			</p>
-			<p>Album example is &copy; Bootstrap, but please download and
-				customize it for yourself!</p>
-			<p>
-				New to Bootstrap? <a href="../../">Visit the homepage</a> or read
-				our <a href="../../getting-started/">getting started guide</a>.
+			<p class="text-white">
+				네이버 영화 API를 이용한 영화 검색 사이트
 			</p>
 		</div>
+		
+		<div class="footer-copyright text-center pb-3">
+			<p class="text-info">&copy; 제   작 : 최종영</p>
+			<p class="text-info">@ E-Mail : whddud102@naver.com</p>
+			<p class="text-info">@ Source : <a href="https://github.com/whddud102/MovieAPI_Project">github.com/whddud102/MovieAPI_Project</a></p>
+			</div>
+  <!-- Copyright -->
 	</footer>
 
 	<!-- Optional JavaScript -->
