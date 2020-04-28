@@ -68,8 +68,8 @@
 					
 					<div class="row mt-4">
 						<div class="col-md-10 mt-1">
-							<form id="searchForm" action="#" method="get">
-								<input name="keyword" class="form-control form-control-lg" type="text">
+							<form id="searchForm" action="/movie/search" method="get">
+								<input name="query" class="form-control form-control-lg" type="text">
 							</form>
 						</div>
 						
@@ -199,9 +199,10 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
+	<script
+ 		 src="https://code.jquery.com/jquery-3.5.0.min.js"
+ 		 integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+  		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -211,20 +212,28 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 		
+	<!-- 검색 동작 처리 스크립트 -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
-			var serachForm = $("#searchForm");
+			// 검색 Form 검사
 			
 			$("#searchButton").on("click", function(event) {
-				var val = $("input[name='keyword']").val();
+				var val = $("input[name='query']").val();
 
 				if(!val) {
 					alert("검색어를 입력해주세요");
 				} else {
-					alert(val)					;
+					alert(val);
+					
+					$.getJSON("/movie/search/" + val, function(data, textStatus, req) {
+						alert("검색 요청 성공\n검색어 : " + val);
+						console.log(data);
+						
+					})
 				}
-			})
+			});
+			
 		})
 	
 	</script>

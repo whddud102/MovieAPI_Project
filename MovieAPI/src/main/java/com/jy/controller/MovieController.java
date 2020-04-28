@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,9 +22,9 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 	
-	@GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<MovieVO> getItems(String query) {
-		log.info("/movie/search : " + query);
+	@GetMapping(value = "/search/{query}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<MovieVO> getItems(@PathVariable("query") String query) {
+		log.info("/movie/search/" + query);
 		
 		List<MovieVO> items = movieService.getItems(query);
 		return items;
