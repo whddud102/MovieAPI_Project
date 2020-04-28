@@ -28,34 +28,26 @@
 
 		<!-- 네비게이션 바 -->
 		<div class="navbar navbar-dark bg-dark box-shadow">
-		
+
 			<div class="container d-flex justify-content-between">
-			
-				<a href="#" class="navbar-brand d-flex align-items-center"> 
-				<strong	class="mr-3">영화 검색 </strong> 
-				<svg id="i-search"
-						xmlns="http://www.w3.org/2000/svg" 
-						viewBox="0 0 32 32" 
-						width="32"
-						height="32" 
-						fill="none" 
-						stroke="currentcolor"
-						stroke-linecap="round" 
-						stroke-linejoin="round" 
-						stroke-width="2">
+
+				<a href="/" class="navbar-brand d-flex align-items-center"> <strong
+					class="mr-3">영화 검색 </strong> <svg id="i-search"
+						xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32"
+						height="32" fill="none" stroke="currentcolor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 				    <circle cx="14" cy="14" r="12" />
 				    <path d="M23 23 L30 30" />
 				</svg>
-
 				</a>
-				<button class="navbar-toggler" type="button"
-					data-toggle="colapse" data-target="#navbarHeader"
-					aria-controls="navbarHeader" aria-expanded="false"
-					aria-label="Toggle navigation">
+				<button class="navbar-toggler" type="button" data-toggle="colapse"
+					data-target="#navbarHeader" aria-controls="navbarHeader"
+					aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
+
 			</div>
-			
+
 		</div>
 
 
@@ -65,33 +57,30 @@
 		<section class="jumbotron text-center">
 			<div class="container">
 				<h1 class="jumbotron-heading">영화 검색하기</h1>
-					
-					<div class="row mt-4">
-						<div class="col-md-10 mt-1">
-							<form id="searchForm" action="/movie/search" method="get">
-								<input name="query" class="form-control form-control-lg" type="text">
-							</form>
-						</div>
-						
-						<div class="col-md-2">
-							<button id="searchButton" class="btn btn-primary btn-block">
-									<svg id="i-search"
-										xmlns="http://www.w3.org/2000/svg" 
-										viewBox="0 0 32 32" 
-										width="32"
-										height="32" 
-										fill="none" 
-										stroke="currentcolor"
-										stroke-linecap="round" 
-										stroke-linejoin="round" 
-										stroke-width="2">
-								    <circle cx="14" cy="14" r="12" />
-								    <path d="M23 23 L30 30" />
-									</svg>
+
+				<div class="row mt-4">
+					<div class="col-md-12">
+						<form class="row" id="searchForm" action="/movie/search" method="get">
+							<div class="col-12 col-sm pr-sm-0">
+								<input name="query" class="form-control form-control-lg"
+									type="text" placeholder="영화 제목을 입력하세요">
+							</div>
+							
+							<div class="col-12 col-sm-auto pl-sm-0">
+								<button id="searchButton" class="btn btn-primary btn-sm">
+									<svg id="i-search" xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 32 32" width="32" height="32" fill="none"
+										stroke="currentcolor" stroke-linecap="round"
+										stroke-linejoin="round" stroke-width="2">
+									    <circle cx="14" cy="14" r="12" />
+									    <path d="M23 23 L30 30" />
+										</svg>
 								</button>
-						</div>
-						
+							</div>
+						</form>
+
 					</div>
+				</div>
 
 			</div>
 		</section>
@@ -102,33 +91,35 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="card">
-							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-							<div class="card-body">
-								<h4 class="card-title">
-									<c:out value="${movie.getFormmatedName() }" />
-								</h4>
-								<p class="card-text">
-									<c:out value="${movie.userRating }" />
-								</p>
-							</div>
+						<img class="card-img-top img-thumbnail"
+							src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+						<div class="card-body">
+							<h4 class="card-title">
+								<c:out value="${movie.getFormmatedName() }" />
+							</h4>
+							<p class="card-text">
+								<c:out value="${movie.userRating }" />
+							</p>
 						</div>
+					</div>
 				</div>
-				
+
 				<div class="col-md-6">
 					<div class="card">
-							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-							<div class="card-body">
-								<h4 class="card-title">
-									<c:out value="${movie.getFormmatedName() }" />
-								</h4>
-								<p class="card-text">
-									<c:out value="${movie.userRating }" />
-								</p>
-							</div>
+						<img class="card-img-top img-thumbnail"
+							src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+						<div class="card-body">
+							<h4 class="card-title">
+								<c:out value="${movie.getFormmatedName() }" />
+							</h4>
+							<p class="card-text">
+								<c:out value="${movie.userRating }" />
+							</p>
 						</div>
+					</div>
 				</div>
-				
-			<!-- 
+
+				<!-- 
 				<c:forEach var="movie" items="${items}">
 					<div class="col-md-2">
 						<div class="card">
@@ -145,41 +136,43 @@
 					</div>
 				</c:forEach>
 				 -->
-			<!-- ./row -->
+				<!-- ./row -->
 			</div>
-			
-				<div class="row">
+
+			<div class="row">
 				<div class="col-md-6">
 					<div class="card">
-							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-							<div class="card-body">
-								<h4 class="card-title">
-									<c:out value="${movie.getFormmatedName() }" />
-								</h4>
-								<p class="card-text">
-									<c:out value="${movie.userRating }" />
-								</p>
-							</div>
+						<img class="card-img-top img-thumbnail"
+							src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+						<div class="card-body">
+							<h4 class="card-title">
+								<c:out value="${movie.getFormmatedName() }" />
+							</h4>
+							<p class="card-text">
+								<c:out value="${movie.userRating }" />
+							</p>
 						</div>
+					</div>
 				</div>
-				
+
 				<div class="col-md-6">
 					<div class="card">
-							<img class="card-img-top img-thumbnail" src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-							<div class="card-body">
-								<h4 class="card-title">
-									<c:out value="${movie.getFormmatedName() }" />
-								</h4>
-								<p class="card-text">
-									<c:out value="${movie.userRating }" />
-								</p>
-							</div>
+						<img class="card-img-top img-thumbnail"
+							src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
+						<div class="card-body">
+							<h4 class="card-title">
+								<c:out value="${movie.getFormmatedName() }" />
+							</h4>
+							<p class="card-text">
+								<c:out value="${movie.userRating }" />
+							</p>
 						</div>
+					</div>
 				</div>
-				 -->
-			<!-- ./row -->
+				-->
+				<!-- ./row -->
 			</div>
-		<!-- ./container -->	
+			<!-- ./container -->
 		</div>
 	</main>
 
@@ -199,10 +192,9 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script
- 		 src="https://code.jquery.com/jquery-3.5.0.min.js"
- 		 integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-  		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js"
+		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -211,7 +203,7 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-		
+
 	<!-- 검색 동작 처리 스크립트 -->
 	<script type="text/javascript">
 		$(document).ready(function() {
