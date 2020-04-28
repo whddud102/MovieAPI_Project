@@ -180,15 +180,15 @@
 			<p class="float-right">
 				<a class="text-light" href="#">Back to top</a>
 			</p>
-			<p class="text-white">
+			<p class="text-secondary">
 				네이버 영화 API를 이용한 영화 검색 사이트
 			</p>
 		</div>
 		
 		<div class="footer-copyright text-center pb-3">
-			<p class="text-info">&copy; 제   작 : 최종영</p>
-			<p class="text-info">@ E-Mail : whddud102@naver.com</p>
-			<p class="text-info">@ Source : <a href="https://github.com/whddud102/MovieAPI_Project">github.com/whddud102/MovieAPI_Project</a></p>
+			<p class="text-info"><span class="text-secondary">&copy; 제   작 : </span>Jong Young Choi</p>
+			<p class="text-info"><span class="text-secondary">@ E-Mail : </span>whddud102@naver.com</p>
+			<p class="text-info"><span class="text-secondary">@ Source : </span><a href="https://github.com/whddud102/MovieAPI_Project">github.com/whddud102/MovieAPI_Project</a></p>
 			</div>
   <!-- Copyright -->
 	</footer>
