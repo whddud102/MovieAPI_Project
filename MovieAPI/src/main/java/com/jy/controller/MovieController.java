@@ -16,7 +16,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @RestController
-@RequestMapping("/movie/")
+@RequestMapping("/movie")
 public class MovieController {
 	
 	@Autowired
@@ -24,9 +24,10 @@ public class MovieController {
 	
 	@GetMapping(value = "/search/{query}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<MovieVO> getItems(@PathVariable("query") String query) {
-		log.info("/movie/search/" + query);
+		log.info("/movie/search/" + query + "  요청 됨");
 		
 		List<MovieVO> items = movieService.getItems(query);
 		return items;
+		
 	}
 }

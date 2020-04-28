@@ -59,26 +59,21 @@
 				<h1 class="jumbotron-heading">영화 검색하기</h1>
 
 				<div class="row mt-4">
-					<div class="col-md-12">
-						<form class="row" id="searchForm" action="/movie/search" method="get">
-							<div class="col-12 col-sm pr-sm-0">
-								<input name="query" class="form-control form-control-lg"
-									type="text" placeholder="영화 제목을 입력하세요">
-							</div>
-							
-							<div class="col-12 col-sm-auto pl-sm-0">
-								<button id="searchButton" class="btn btn-primary btn-sm">
-									<svg id="i-search" xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 32 32" width="32" height="32" fill="none"
-										stroke="currentcolor" stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2">
+					<div class="col-12 col-sm pr-sm-0">
+						<input name="query" class="form-control form-control-lg"
+							type="text" placeholder="영화 제목을 입력하세요">
+					</div>
+
+					<div class="col-12 col-sm-auto pl-sm-0">
+						<button id="searchButton" class="btn btn-primary btn-sm">
+							<svg id="i-search" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 32 32" width="32" height="32" fill="none"
+								stroke="currentcolor" stroke-linecap="round"
+								stroke-linejoin="round" stroke-width="2">
 									    <circle cx="14" cy="14" r="12" />
 									    <path d="M23 23 L30 30" />
 										</svg>
-								</button>
-							</div>
-						</form>
-
+						</button>
 					</div>
 				</div>
 
@@ -119,24 +114,6 @@
 					</div>
 				</div>
 
-				<!-- 
-				<c:forEach var="movie" items="${items}">
-					<div class="col-md-2">
-						<div class="card">
-							<img class="card-img-top img-thumbnail" src="<c:out value ='${movie.image}'/>">
-							<div class="card-body">
-								<h4 class="card-title">
-									<c:out value="${movie.getFormmatedName() }" />
-								</h4>
-								<p class="card-text">
-									<c:out value="${movie.userRating }" />
-								</p>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-				 -->
-				<!-- ./row -->
 			</div>
 
 			<div class="row">
@@ -180,17 +157,22 @@
 			<p class="float-right">
 				<a class="text-light" href="#">Back to top</a>
 			</p>
-			<p class="text-secondary">
-				네이버 영화 API를 이용한 영화 검색 사이트
+			<p class="text-secondary">네이버 영화 API를 이용한 영화 검색 사이트</p>
+		</div>
+
+		<div class="footer-copyright text-center pb-3">
+			<p class="text-info">
+				<span class="text-secondary">&copy; 제 작 : </span>Jong Young Choi
+			</p>
+			<p class="text-info">
+				<span class="text-secondary">@ E-Mail : </span>whddud102@naver.com
+			</p>
+			<p class="text-info">
+				<span class="text-secondary">@ Source : </span><a
+					href="https://github.com/whddud102/MovieAPI_Project">github.com/whddud102/MovieAPI_Project</a>
 			</p>
 		</div>
-		
-		<div class="footer-copyright text-center pb-3">
-			<p class="text-info"><span class="text-secondary">&copy; 제   작 : </span>Jong Young Choi</p>
-			<p class="text-info"><span class="text-secondary">@ E-Mail : </span>whddud102@naver.com</p>
-			<p class="text-info"><span class="text-secondary">@ Source : </span><a href="https://github.com/whddud102/MovieAPI_Project">github.com/whddud102/MovieAPI_Project</a></p>
-			</div>
-  <!-- Copyright -->
+		<!-- Copyright -->
 	</footer>
 
 	<!-- Optional JavaScript -->
@@ -219,13 +201,12 @@
 				if(!val) {
 					alert("검색어를 입력해주세요");
 				} else {
-					alert(val);
+					alert("검색어 (" + val + ") 요청 성공");
+					$.getJSON("/movie/search/" + val, 
+						function(data, textStatus, req) {
+							console.log(data);
+					});
 					
-					$.getJSON("/movie/search/" + val, function(data, textStatus, req) {
-						alert("검색 요청 성공\n검색어 : " + val);
-						console.log(data);
-						
-					})
 				}
 			});
 			
