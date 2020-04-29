@@ -81,79 +81,14 @@
 		</section>
 
 		<!-- 결과 출력 영역 -->
-		<div class="container">
-
-			<div class="row">
-				<div class="col-md-6">
-					<div class="card">
-						<img class="card-img-top img-thumbnail"
-							src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-						<div class="card-body">
-							<h4 class="card-title">
-								<c:out value="${movie.getFormmatedName() }" />
-							</h4>
-							<p class="card-text">
-								<c:out value="${movie.userRating }" />
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					<div class="card">
-						<img class="card-img-top img-thumbnail"
-							src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-						<div class="card-body">
-							<h4 class="card-title">
-								<c:out value="${movie.getFormmatedName() }" />
-							</h4>
-							<p class="card-text">
-								<c:out value="${movie.userRating }" />
-							</p>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="row">
-				<div class="col-md-6">
-					<div class="card">
-						<img class="card-img-top img-thumbnail"
-							src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-						<div class="card-body">
-							<h4 class="card-title">
-								<c:out value="${movie.getFormmatedName() }" />
-							</h4>
-							<p class="card-text">
-								<c:out value="${movie.userRating }" />
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					<div class="card">
-						<img class="card-img-top img-thumbnail"
-							src="https://ssl.pstatic.net/imgmovie/mdi/mit110/0475/D7568-00.jpg">
-						<div class="card-body">
-							<h4 class="card-title">
-								<c:out value="${movie.getFormmatedName() }" />
-							</h4>
-							<p class="card-text">
-								<c:out value="${movie.userRating }" />
-							</p>
-						</div>
-					</div>
-				</div>
-				<!-- ./row -->
-			</div>
-			<!-- ./container -->
+		<div class="container" id="div_searchResult">
+			<!-- 영화 검색 결과가 출력 될 영역 -->
 		</div>
+		<!-- ./container -->
 	</main>
 
 	<footer class="text-muted bg-dark">
-		<div class="container pt-3">
+		<div class="container pt-3 mt-3">
 			<p class="float-right">
 				<a class="text-light" href="#">Back to top</a>
 			</p>
@@ -189,29 +124,112 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 
+<!-- 별점을 구하는 자바 스크립트 -->
+<script type="text/javascript">
+	var getOnlyDecimal = function(_number) {
+	  var result;
+	  result = _number % 1;
+	  result  = Number(result .toFixed(1));
+	  return result;
+	};
+	
+	var makeStarHTML = function(_userRating, movie) {
+		var starScore = _userRating * 0.5;		// 평점을 별점으로 환산한 값
+		var starFill = Math.floor(starScore);
+		var starHalf = getOnlyDecimal(starScore) >= 0.5 ? 1 : 0; 
+		var starEmpty = 5 - (starFill + starHalf);
+		
+		var str = "";
+		for(var num = 0; num < starFill; num++) {
+			str +=  "<svg class='bi bi-star-fill' width='1em' height='1em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>";
+			str +=  "<path d='M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z'/>";
+			str +=	 "</svg>";
+		}
+		
+		for(var num = 0; num < starHalf; num++) {
+			str +=  "<svg class='bi bi-star-half' width='1em' height='1em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>";
+			str +=  "<path fill-rule='evenodd' d='M5.354 5.119L7.538.792A.516.516 0 018 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0116 6.32a.55.55 0 01-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.519.519 0 01-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 01-.171-.403.59.59 0 01.084-.302.513.513 0 01.37-.245l4.898-.696zM8 12.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 01.163-.505l2.906-2.77-4.052-.576a.525.525 0 01-.393-.288L8.002 2.223 8 2.226v9.8z' clip-rule='evenodd'/>";
+			str +=	 "</svg>";
+		}
+		
+		for(var num = 0; num < starEmpty; num++) {
+			str += "<svg class='bi bi-star' width='1em' height='1em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>";
+			str +=  "<path fill-rule='evenodd' d='M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 00-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 00-.163-.505L1.71 6.745l4.052-.576a.525.525 0 00.393-.288l1.847-3.658 1.846 3.658a.525.525 0 00.393.288l4.052.575-2.906 2.77a.564.564 0 00-.163.506l.694 3.957-3.686-1.894a.503.503 0 00-.461 0z' clip-rule='evenodd'/>";
+			str += "</svg>";
+		}
+		
+		return str;
+	};
+	
+	
+</script>
+
 	<!-- 검색 동작 처리 스크립트 -->
 	<script type="text/javascript">
+	
 		$(document).ready(function() {
-			
+				var itemNum_forRow = 3;
 			// 검색 Form 검사
-			
 			$("#searchButton").on("click", function(event) {
 				var val = $("input[name='query']").val();
-
+				
 				if(!val) {
 					alert("검색어를 입력해주세요");
 				} else {
 					alert("검색어 (" + val + ") 요청 성공");
-					$.getJSON("/movie/search/" + val, 
-						function(data, textStatus, req) {
-							console.log(data);
-					});
 					
-				}
+					$.getJSON("/movie/search/" + val, 
+							function(items, textStatus, req) {
+								
+								console.log(items);
+						
+								var rowNum;
+								var str ="";
+								
+								if(items.length <= 3) {
+									rowNum = 1;
+								} else if (items.length <= 6) {
+									rowNum = 2;
+								} else {
+									rowNum = 3;
+								}	
+								
+								for(var row = 0; row < rowNum; row++) {
+									str += "<div class='row m-1 p-1'>"
+									
+									// items에서 영화 item을 가져올 인덱스
+									var idxStart = itemNum_forRow * row;
+									var idxEnd = idxStart + itemNum_forRow;
+									
+									for(var idx = idxStart; idx < idxEnd; idx++) {
+										var movie = items[idx];
+									
+										str += "<div class='col-md-4 py-2 border bg-light rounded'>";
+										
+										if(movie != null) { 
+											str += 		"<div class='row alin-items-center h-100'>";
+											str += 			"<div class='col-5 m-auto'>";
+											str += 				"<a href='" + movie.link +  "' target='_blank'><img class='img-thumbnail align-middle border border-dark' src='" + movie.image + "'></a>"; 
+											str +=			 "</div>";
+											str += 			"<div class='col-7 m-auto'>";
+											str += 				"<p class='text-center font-weight-bold'>" + movie.title + "</p>";
+											str += 				"<p class='text-center'>";
+											str +=				makeStarHTML(movie.userRating, movie);
+											str += 			"</div>";
+											str += 		"</div>";
+											
+										}
+											str += "</div>";
+									}
+									
+									str += "</div>"
+								}
+								
+								$("#div_searchResult").html(str);
+					});
+				};
 			});
-			
-		})
-	
+		});
 	</script>
 </body>
 </html>
