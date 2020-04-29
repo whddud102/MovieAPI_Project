@@ -7,4 +7,6 @@ import com.jy.domain.MovieVO;
 public interface MovieService {
 	
 	public List<MovieVO> getItems(String query);
+	
+	public List<MovieVO> getItems(String query, int display);
 }

@@ -36,4 +36,11 @@ public class MovieServiceImpl implements MovieService {
 		return items;
 	}
 
+	@Override
+	public List<MovieVO> getItems(String query, int display) {
+		movieAPI_Util.setDisplay(display);
+		
+		return getItems(query);
+	}
+
 }
