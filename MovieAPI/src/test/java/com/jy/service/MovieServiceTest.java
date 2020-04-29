@@ -29,7 +29,30 @@ public class MovieServiceTest {
 	
 	@Test
 	public void getItems_Test() {
-		List<MovieVO> items = movieServiceImpl.getItems("말괄량이");
+		List<MovieVO> items = movieServiceImpl.getItems("클래식");
+		
+		for (MovieVO movie : items) {
+			log.info(movie);
+			
+//			log.info(" ");
+//			log.info(movie.getTitle());
+//			log.info(movie.getSubtitle());
+//			log.info(movie.getDirector());
+//			log.info(movie.getPubDate());
+//			log.info(movie.getActor());
+//			log.info(movie.getLink());
+//			log.info(movie.getImage());
+//			log.info(movie.getUserRating());
+			log.info("----------------------------");
+		}
+		
+		
+	}
+	
+	@Test
+	public void getItemsWithDisplay_Test() {
+		log.info("Display = 9로 검색 요청");
+		List<MovieVO> items = movieServiceImpl.getItems("오직 그대만", 9);
 		
 		for (MovieVO movie : items) {
 			log.info(" ");
@@ -43,7 +66,5 @@ public class MovieServiceTest {
 			log.info(movie.getUserRating());
 			log.info("----------------------------");
 		}
-		
-		
 	}
 }
