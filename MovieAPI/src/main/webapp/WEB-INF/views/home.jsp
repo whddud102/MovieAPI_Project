@@ -90,10 +90,39 @@
 			</div>
 		</div>
 		<!-- ./container -->
+		
+		
+		<!-- 페이지 번호를 출력할 영역 -->
+		<div class="row">
+			<div class="col-md-12 m-3">
+					<nav aria-label="Page navigation">
+						 <ul class="pagination justify-content-center">
+					   		 <li class="page-item">
+					     		 <a class="page-link" href="#" aria-label="Previous">
+						       		 <span aria-hidden="true">&laquo;</span>
+						       		 <span class="sr-only">Previous</span>
+					   		      </a>
+						    </li>
+						    
+						   <li class="page-item"><a class="page-link" href="#">1</a></li>
+						    <li class="page-item"><a class="page-link" href="#">2</a></li>
+						    <li class="page-item"><a class="page-link" href="#">3</a></li>
+						    
+						    <li class="page-item">
+						      <a class="page-link" href="#" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						        <span class="sr-only">Next</span>
+						      </a>
+						    </li>
+					  </ul>
+					</nav>
+			</div>		
+		</div>
+		
 	</main>
 
 	<footer class="text-muted bg-dark fixed-bottom position-relative">
-		<div class="container pt-3 mt-3">
+		<div class="container pt-3">
 			<p class="float-right">
 				<a class="text-light" href="#">Back to top</a>
 			</p>
@@ -184,6 +213,23 @@
 		
 		return result;
 	};
+	
+	var makeResultHTML = function(movie) {
+		var str = "";
+		
+		str += 		"<div class='row alin-items-center h-100'>";
+		str += 			"<div class='col-5 m-auto'>";
+		str += 				makeImgHTML(movie);
+		str +=			 "</div>";
+		str += 			"<div class='col-7 m-auto'>";
+		str += 				"<p class='text-center font-weight-bold'><a href='" + movie.link + "' target='_blank'>" + movie.title + "</a></p>";
+		str += 				"<p class='text-center'>";
+		str +=				makeStarHTML(movie);
+		str += 			"</div>";
+		str += 		"</div>";
+		
+		return str;
+	}
 </script>
 
 
@@ -230,19 +276,9 @@
 										str += "<div class='col-md-4 py-2 border bg-light rounded'>";
 										
 										if(movie != null) { 
-											str += 		"<div class='row alin-items-center h-100'>";
-											str += 			"<div class='col-5 m-auto'>";
-											str += 				makeImgHTML(movie);
-											str +=			 "</div>";
-											str += 			"<div class='col-7 m-auto'>";
-											str += 				"<p class='text-center font-weight-bold'>" + movie.title + "</p>";
-											str += 				"<p class='text-center'>";
-											str +=				makeStarHTML(movie);
-											str += 			"</div>";
-											str += 		"</div>";
-											
+											str += makeResultHTML(movie);											
 										}
-											str += "</div>";
+										str += "</div>";
 									}
 									
 									str += "</div>"
