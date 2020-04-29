@@ -83,11 +83,16 @@
 		<!-- 결과 출력 영역 -->
 		<div class="container" id="div_searchResult">
 			<!-- 영화 검색 결과가 출력 될 영역 -->
+			<div class="row h-100 bg-info">
+				<div class="col my-5">
+					<h1 class="text-center">영화를 검색해주세요</h1>
+				</div>
+			</div>
 		</div>
 		<!-- ./container -->
 	</main>
 
-	<footer class="text-muted bg-dark">
+	<footer class="text-muted bg-dark fixed-bottom position-relative">
 		<div class="container pt-3 mt-3">
 			<p class="float-right">
 				<a class="text-light" href="#">Back to top</a>
@@ -124,7 +129,7 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 
-<!-- 별점을 구하는 자바 스크립트 -->
+<!-- 검색 결과 출력을 도와주는 스크립트 -->
 <script type="text/javascript">
 	var getOnlyDecimal = function(_number) {
 	  var result;
@@ -133,8 +138,8 @@
 	  return result;
 	};
 	
-	var makeStarHTML = function(_userRating, movie) {
-		var starScore = _userRating * 0.5;		// 평점을 별점으로 환산한 값
+	var makeStarHTML = function(movie) {
+		var starScore = movie.userRating * 0.5;		// 평점을 별점으로 환산한 값
 		var starFill = Math.floor(starScore);
 		var starHalf = getOnlyDecimal(starScore) >= 0.5 ? 1 : 0; 
 		var starEmpty = 5 - (starFill + starHalf);
@@ -161,8 +166,26 @@
 		return str;
 	};
 	
-	
+	var makeImgHTML = function(movie) {
+		var result = "";
+		
+		if(movie.image == "") {
+			result += "<div class='d-flex justify-content-center'><svg class='bi bi-exclamation-triangle' width='1em' height='1em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>";
+			result += "<path fill-rule='evenodd' d='M7.938 2.016a.146.146 0 00-.054.057L1.027 13.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L8.12 2.073a.146.146 0 00-.054-.057A.13.13 0 008.002 2a.13.13 0 00-.064.016zm1.044-.45a1.13 1.13 0 00-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z' clip-rule='evenodd'/>";
+			result += "<path d='M7.002 12a1 1 0 112 0 1 1 0 01-2 0zM7.1 5.995a.905.905 0 111.8 0l-.35 3.507a.552.552 0 01-1.1 0L7.1 5.995z'/>";
+			result += "</div></svg>";
+			result += "<p class='text-center'>이미지가<br>없습니다</p>";
+			
+			console.log(result);
+		} else {
+			result += "<a href='" + movie.link +  "' target='_blank'>";
+			result += "<img class='img-thumbnail align-middle border border-dark' src='" + movie.image + "'></a>";			
+		}
+		
+		return result;
+	};
 </script>
+
 
 	<!-- 검색 동작 처리 스크립트 -->
 	<script type="text/javascript">
@@ -209,12 +232,12 @@
 										if(movie != null) { 
 											str += 		"<div class='row alin-items-center h-100'>";
 											str += 			"<div class='col-5 m-auto'>";
-											str += 				"<a href='" + movie.link +  "' target='_blank'><img class='img-thumbnail align-middle border border-dark' src='" + movie.image + "'></a>"; 
+											str += 				makeImgHTML(movie);
 											str +=			 "</div>";
 											str += 			"<div class='col-7 m-auto'>";
 											str += 				"<p class='text-center font-weight-bold'>" + movie.title + "</p>";
 											str += 				"<p class='text-center'>";
-											str +=				makeStarHTML(movie.userRating, movie);
+											str +=				makeStarHTML(movie);
 											str += 			"</div>";
 											str += 		"</div>";
 											
