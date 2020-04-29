@@ -26,7 +26,7 @@ public class MovieController {
 	public List<MovieVO> getItems(@PathVariable("query") String query) {
 		log.info("/movie/search/" + query + "  요청 됨");
 		
-		List<MovieVO> items = movieService.getItems(query);
+		List<MovieVO> items = movieService.getItems(query, 9);
 		return items;
 		
 	}
