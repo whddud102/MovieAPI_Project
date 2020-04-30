@@ -19,6 +19,14 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+
+.hn {
+	font-family: 'Hanna', sans-serif;
+}
+</style>
+
 
 <title>영화 정보</title>
 </head>
@@ -56,7 +64,7 @@
 	<main role="main">
 		<section class="jumbotron text-center">
 			<div class="container">
-				<h1 class="jumbotron-heading">영화 검색하기</h1>
+				<h1 class="jumbotron-heading hn">영화 검색하기</h1>
 
 				<div class="row mt-4">
 					<div class="col-12 col-sm pr-sm-0">
@@ -72,7 +80,7 @@
 								stroke-linejoin="round" stroke-width="2">
 									    <circle cx="14" cy="14" r="12" />
 									    <path d="M23 23 L30 30" />
-										</svg>
+							</svg>
 						</button>
 					</div>
 				</div>
@@ -83,42 +91,74 @@
 		<!-- 결과 출력 영역 -->
 		<div class="container" id="div_searchResult">
 			<!-- 영화 검색 결과가 출력 될 영역 -->
-			<div class="row h-100 bg-info">
-				<div class="col my-5">
-					<h1 class="text-center">영화를 검색해주세요</h1>
+			<div class="row" style="min-height: 300px;">
+				<div class="col bg-info">
+				
+					<SPAN id="gocoder_typing">
+ 						<!-- 타이핑 이펙트 영역 -->
+					</span>
+					
 				</div>
 			</div>
 		</div>
 		<!-- ./container -->
-		
-		
+
+
 		<!-- 페이지 번호를 출력할 영역 -->
 		<div class="row">
-			<div class="col-md-12 m-3">
-					<nav aria-label="Page navigation">
-						 <ul class="pagination justify-content-center">
-					   		 <li class="page-item">
-					     		 <a class="page-link" href="#" aria-label="Previous">
-						       		 <span aria-hidden="true">&laquo;</span>
-						       		 <span class="sr-only">Previous</span>
-					   		      </a>
-						    </li>
-						    
-						   <li class="page-item"><a class="page-link" href="#">1</a></li>
-						    <li class="page-item"><a class="page-link" href="#">2</a></li>
-						    <li class="page-item"><a class="page-link" href="#">3</a></li>
-						    
-						    <li class="page-item">
-						      <a class="page-link" href="#" aria-label="Next">
-						        <span aria-hidden="true">&raquo;</span>
-						        <span class="sr-only">Next</span>
-						      </a>
-						    </li>
-					  </ul>
-					</nav>
-			</div>		
+			<div class="col-md-12 mt-3">
+				<nav aria-label="Page navigation">
+					<ul class="pagination justify-content-center">
+						
+						<!-- 이전 버튼을 누를 수 있을때만 활성화 -->
+						<c:choose>
+							<c:when test="${pageMaker.prev }">
+								<li class="page-item"><a class="page-link" href="#" aria-label="Previous"> 
+										<span aria-hidden="true">&laquo;</span>
+								 		<span class="sr-only">Previous</span>
+									</a>
+								</li>
+							</c:when>
+							
+							<c:otherwise>
+									<li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"> 
+										<span aria-hidden="true">&laquo;</span>
+								 		<span class="sr-only">Previous</span>
+									</a>
+								</li>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+							<li class="page-item"><a class="page-link" href="#">${num}</a></li>
+						</c:forEach>
+
+
+						<!-- 다음 버튼을 누를 수 있을때만 활성화 -->
+						<c:choose>
+							<c:when test="${pageMaker.prev }">
+								<li class="page-item">
+									<a class="page-link" href="#" aria-label="Next"> 
+									<span aria-hidden="true">&raquo;</span> 
+									<span class="sr-only">Next</span>
+									</a>
+								</li>
+							</c:when>
+							
+							<c:otherwise>
+								<li class="page-item disabled">
+									<a class="page-link" href="#" aria-label="Next"> 
+									<span aria-hidden="true">&raquo;</span> 
+									<span class="sr-only">Next</span>
+									</a>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</ul>
+				</nav>
+			</div>
 		</div>
-		
+
 	</main>
 
 	<footer class="text-muted bg-dark fixed-bottom position-relative">
@@ -157,9 +197,11 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+<script src="https://www.cssscript.com/demo/simple-typewriter-effect-pure-javascript-typewriterjs/typewriter.js"></script>
 
-<!-- 검색 결과 출력을 도와주는 스크립트 -->
-<script type="text/javascript">
+
+	<!-- 검색 결과 출력을 도와주는 스크립트 -->
+	<script type="text/javascript">
 	var getOnlyDecimal = function(_number) {
 	  var result;
 	  result = _number % 1;
@@ -214,7 +256,7 @@
 		return result;
 	};
 	
-	var makeResultHTML = function(movie) {
+	var makeMovieItemHTML = function(movie) {
 		var str = "";
 		
 		str += 		"<div class='row alin-items-center h-100'>";
@@ -230,6 +272,48 @@
 		
 		return str;
 	}
+	
+	var calculateRow = function(numItems) {
+		var numRow;
+		
+		if(numItems <= 3) {
+			numRow = 1;
+		} else if (numItems <= 6) {
+			numRow = 2;
+		} else {
+			numRow = 3;
+		}	
+		
+		return numRow;
+	}
+	
+	var makeResultHTML = function(numRow, items) {
+		var itemNum_forRow = 3;		// 한 줄에 출력할 영화 개수
+		var str = "";
+		
+		for(var row = 0; row < numRow; row++) {
+			str += "<div class='row my-2'>"
+			
+			// items에서 영화 item을 가져올 인덱스
+			var idxStart = itemNum_forRow * row;
+			var idxEnd = idxStart + itemNum_forRow;
+			
+			for(var idx = idxStart; idx < idxEnd; idx++) {
+				var movie = items[idx];
+			
+				str += "<div class='col-md-4 py-2 border bg-light rounded'>";
+				
+				if(movie != null) { 
+					str += makeMovieItemHTML(movie);											
+				}
+				str += "</div>";
+			}
+			
+			str += "</div>"
+		}
+		
+		return str;
+	}
 </script>
 
 
@@ -237,7 +321,6 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
-				var itemNum_forRow = 3;
 			// 검색 Form 검사
 			$("#searchButton").on("click", function(event) {
 				var val = $("input[name='query']").val();
@@ -252,37 +335,8 @@
 								
 								console.log(items);
 						
-								var rowNum;
-								var str ="";
-								
-								if(items.length <= 3) {
-									rowNum = 1;
-								} else if (items.length <= 6) {
-									rowNum = 2;
-								} else {
-									rowNum = 3;
-								}	
-								
-								for(var row = 0; row < rowNum; row++) {
-									str += "<div class='row m-1 p-1'>"
-									
-									// items에서 영화 item을 가져올 인덱스
-									var idxStart = itemNum_forRow * row;
-									var idxEnd = idxStart + itemNum_forRow;
-									
-									for(var idx = idxStart; idx < idxEnd; idx++) {
-										var movie = items[idx];
-									
-										str += "<div class='col-md-4 py-2 border bg-light rounded'>";
-										
-										if(movie != null) { 
-											str += makeResultHTML(movie);											
-										}
-										str += "</div>";
-									}
-									
-									str += "</div>"
-								}
+								var numRow = calculateRow(items.length);
+								var str = makeResultHTML(numRow, items);
 								
 								$("#div_searchResult").html(str);
 					});
@@ -290,5 +344,6 @@
 			});
 		});
 	</script>
+
 </body>
 </html>
