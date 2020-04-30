@@ -13,21 +13,22 @@ public class PageDTO {
 	private int startPage;
 	private int endPage;
 	private boolean prev, next;
+	private int total;
 	
-	private int total; 		// 검색된 전체 영화 개수
 	private Criteria cri;	// 검색 조건을 담고 있는 객체
+	private API_ResponseVO api_ResponseVO; // api 요청 결과를 담고 있는 객체
 	
-	public PageDTO(Criteria cri, int total) {
+	public PageDTO(Criteria cri, API_ResponseVO api_ResponseVO) {
 		this.cri = cri;
-		this.total = total;
+		this.api_ResponseVO = api_ResponseVO;
+		
+		this.total = api_ResponseVO.getTotal();
 	
-		this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0)) * 10;
+		this.endPage = (int)(Math.ceil(cri.getCurrentPage() / 10.0)) * 10;
 		
 		this.startPage = this.endPage - 9;
 		
 		int realEnd = (int)(Math.ceil((total * 1.0) / cri.getDisplay())) ;
-		
-		log.info("realEnd : " + realEnd);
 		
 		if(realEnd < endPage) {
 			this.endPage = realEnd;
@@ -35,7 +36,5 @@ public class PageDTO {
 		
 		this.prev = this.startPage > 1;
 		this.next = this.endPage < realEnd;
-		
-		log.info("PageDTO 객체 생성 완료 : " + this);
 	}
 }
