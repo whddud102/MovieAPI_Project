@@ -62,6 +62,7 @@ var makeMovieItemHTML = function(movie) {
 	str += "<div class='col-7 m-auto'>";
 	str += "<p class='text-center font-weight-bold'><a href='" + movie.link
 			+ "' target='_blank'>" + movie.title + "</a></p>";
+	str += "<p class='text-center'><strong>(" + movie.pubDate + ")</strong></p>";
 	str += "<p class='text-center'>";
 	str += makeStarHTML(movie);
 	str += "</div>";
