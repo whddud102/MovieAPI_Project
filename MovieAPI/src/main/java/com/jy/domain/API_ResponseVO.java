@@ -7,11 +7,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class API_ResponseVO {
-	private Integer total;
-	private Integer start;
-	private Integer display;
+	private int total;
+	private int start;
+	private int display;
 	private List<MovieVO> items;
 }
