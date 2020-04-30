@@ -1,7 +1,5 @@
 package com.jy.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jy.domain.API_ResponseVO;
 import com.jy.domain.Criteria;
-import com.jy.domain.MovieVO;
 import com.jy.domain.PageDTO;
 import com.jy.service.MovieService;
 
@@ -38,7 +35,7 @@ public class MovieController {
 		
 		log.info("/movie/search/" + query + "/" + currentPage + " 요청 됨");
 		
-		API_ResponseVO api_ResponseVO = movieService.getResponse(query, 9);
+		API_ResponseVO api_ResponseVO = movieService.getResponse(query, 9, currentPage);
 		Criteria cri = new Criteria(currentPage);
 		
 		PageDTO pageDTO = new PageDTO(cri, api_ResponseVO);

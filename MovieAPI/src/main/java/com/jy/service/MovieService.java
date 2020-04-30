@@ -11,11 +11,11 @@ public interface MovieService {
 	
 	public List<MovieVO> getItems(String query, int display);
 	
-	public List<MovieVO> getItems(String query, int display, int page);
+	public List<MovieVO> getItems(String query, int display, int currentPage);
 	
 	public API_ResponseVO getResponse(String query);
 	
 	public API_ResponseVO getResponse(String query, int display);
 	
-	public API_ResponseVO getResponse(String query, int display, int page);
+	public API_ResponseVO getResponse(String query, int display, int currentPage);
 }

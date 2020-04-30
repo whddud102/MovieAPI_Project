@@ -41,8 +41,12 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public API_ResponseVO getResponse(String query, int display, int page) {
-		movieAPI_Util.setStart(page);
+	public API_ResponseVO getResponse(String query, int display, int currentPage) {
+		// 영화를 9 개씩 검색할 경우, 전달 받은 현재 페이지에 해당하는 영화들의 시작 번호
+		// start 번호 부터 9개의 영화를 검색
+		int start = (9*(currentPage -1) + 1);	
+		
+		movieAPI_Util.setStart(start);
 
 		return getResponse(query, display);
 	}
