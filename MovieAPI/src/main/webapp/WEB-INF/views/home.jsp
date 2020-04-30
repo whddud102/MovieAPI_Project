@@ -113,6 +113,9 @@
 						
 					</ul>
 				</nav>
+			
+			<!-- 검색어를 저장할 용도 -->
+			<input id="searchQuery" type="hidden" value="">				
 			</div>
 		</div>
 
@@ -166,28 +169,32 @@
 		$(document).ready(function() {
 			// 검색 Form 검사
 			$("#searchButton").on("click", function(event) {
-				var val = $("input[name='query']").val();
+				var query = $("input[name='query']").val();
 				
-				if(!val) {
+				if(!query) {
 					alert("검색어를 입력해주세요");
 				} else {
-					alert("검색어 (" + val + ") 요청 성공");
+					alert("검색어 (" + query + ") 요청 성공");
 					
-					$.getJSON("/movie/search/" + val + "/1", 
-							function(pageDTO, textStatus, req) {
-								
-								var api_ResponseVO = pageDTO.api_ResponseVO;
-								var items = api_ResponseVO.items;
-								var numRow = calculateRow(items.length);
-								var resultStr = makeResultHTML(numRow, items);
-								var paginationStr = makePageNav(pageDTO);
-								
-								console.log(items);
-								
-								$("#div_searchResult").html(resultStr);
-								$("#paginationList").html(paginationStr);
+					$("#searchQuery").val(query);
+					
+					$.getJSON("/movie/search/" + query + "/1", 
+						function(pageDTO, textStatus, req) {
+							showList(pageDTO);
 					});
 				};
+			});
+			
+			$("#paginationList").on("click", "li",  function(e) {
+				e.preventDefault();
+				
+				var currentPage = e.target.getAttribute("href");
+				var query = $("#searchQuery").val();
+				
+				$.getJSON("/movie/search/" + query + "/" + currentPage, 
+						function(pageDTO, textStatus, req) {
+							showList(pageDTO);
+					});
 			});
 		});
 </script>
