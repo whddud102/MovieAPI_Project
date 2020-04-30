@@ -43,7 +43,6 @@ var makeImgHTML = function(movie) {
 		result += "</div></svg>";
 		result += "<p class='text-center'>이미지가<br>없습니다</p>";
 
-		console.log(result);
 	} else {
 		result += "<a href='" + movie.link + "' target='_blank'>";
 		result += "<img class='img-thumbnail align-middle border border-dark' src='"
@@ -124,14 +123,14 @@ var makePageNav = function(pageDTO) {
 		resultStr += "<li class='page-item disabled'>";
 	}
 
-	resultStr += "<a class='page-link' href='#' aria-label='Previous'>";
+	resultStr += "<a class='page-link' href='" + (pageDTO.starPage -1) + "' aria-label='Previous'>";
 	resultStr += "<span aria-hidden='true'>&laquo;</span>";
 	resultStr += "<span class='sr-only'>Previous</span>";
 	resultStr += "</a>";
 	resultStr += "</li>";
 
 	for (var num = pageDTO.startPage; num <= pageDTO.endPage; num++) {
-		resultStr += "<li class='page-item'><a class='page-link' href='#''>"
+		resultStr += "<li class='page-item'><a class='page-link' href='" + num + "'>"
 				+ num + "</a></li>";
 	}
 
@@ -142,11 +141,24 @@ var makePageNav = function(pageDTO) {
 		resultStr += "<li class='page-item disabled'>";
 	}
 	
-	resultStr += "<a class='page-link' href='#' aria-label='Next'>";
+	resultStr += "<a class='page-link' href='" + (pageDTO.endPage + 1) + "' aria-label='Next'>";
 	resultStr += "<span aria-hidden='true'>&raquo;</span>";
 	resultStr += "<span class='sr-only'>Next</span>";
 	resultStr += "</a>";
 	resultStr += "</li>";
 
 	return resultStr;
+}
+
+var showList = function(pageDTO) {
+	var api_ResponseVO = pageDTO.api_ResponseVO;
+	var items = api_ResponseVO.items;
+	var numRow = calculateRow(items.length);
+	var resultStr = makeResultHTML(numRow, items);
+	var paginationStr = makePageNav(pageDTO);
+	
+	console.log(api_ResponseVO);
+	
+	$("#div_searchResult").html(resultStr);
+	$("#paginationList").html(paginationStr);
 }
