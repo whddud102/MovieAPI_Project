@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.jy.domain.API_ResponseVO;
+import com.jy.domain.Criteria;
 import com.jy.domain.MovieVO;
+import com.jy.domain.PageDTO;
 import com.jy.service.MovieService;
 import com.jy.utils.MovieAPI_Util;
 
@@ -28,10 +30,7 @@ public class HomeController {
 	 * @throws Exception 
 	 */
 	@GetMapping("/")
-	public String home(Model model) throws Exception {
-		List<MovieVO> items =  movieService.getItems("그늘");
-		
-		model.addAttribute("items", items);
+	public String home() throws Exception {
 		return "home";
 	}
 	
