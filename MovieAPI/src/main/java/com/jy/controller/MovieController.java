@@ -32,15 +32,14 @@ public class MovieController {
 	 * @param display 한 번에 출력할 영화 개수	
 	 * @return 검색 결과와 페이지 정보를 담은 pageDTO 객체를 json으로 반환
 	 */
-	@GetMapping(value = "/search/{query}/{currentPage}/{display}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value = "/search/{query}/{currentPage}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public PageDTO getItems(@PathVariable("query") String query,
-			@PathVariable("currentPage") int currentPage,
-			@PathVariable("display") int display) {
+			@PathVariable("currentPage") int currentPage) {
 		
-		log.info("/movie/search/" + query + "/" + currentPage + "/" + display + " 요청 됨");
+		log.info("/movie/search/" + query + "/" + currentPage + " 요청 됨");
 		
 		API_ResponseVO api_ResponseVO = movieService.getResponse(query, 9);
-		Criteria cri = new Criteria(display, currentPage);
+		Criteria cri = new Criteria(currentPage);
 		
 		PageDTO pageDTO = new PageDTO(cri, api_ResponseVO);
 		
