@@ -107,53 +107,10 @@
 		<!-- 페이지 번호를 출력할 영역 -->
 		<div class="row">
 			<div class="col-md-12 mt-3">
+							
 				<nav aria-label="Page navigation">
-					<ul class="pagination justify-content-center">
+					<ul id="paginationList" class="pagination justify-content-center">
 						
-						<!-- 이전 버튼을 누를 수 있을때만 활성화 -->
-						<c:choose>
-							<c:when test="${pageMaker.prev }">
-								<li class="page-item"><a class="page-link" href="#" aria-label="Previous"> 
-										<span aria-hidden="true">&laquo;</span>
-								 		<span class="sr-only">Previous</span>
-									</a>
-								</li>
-							</c:when>
-							
-							<c:otherwise>
-									<li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"> 
-										<span aria-hidden="true">&laquo;</span>
-								 		<span class="sr-only">Previous</span>
-									</a>
-								</li>
-							</c:otherwise>
-						</c:choose>
-						
-						<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-							<li class="page-item"><a class="page-link" href="#">${num}</a></li>
-						</c:forEach>
-
-
-						<!-- 다음 버튼을 누를 수 있을때만 활성화 -->
-						<c:choose>
-							<c:when test="${pageMaker.prev }">
-								<li class="page-item">
-									<a class="page-link" href="#" aria-label="Next"> 
-									<span aria-hidden="true">&raquo;</span> 
-									<span class="sr-only">Next</span>
-									</a>
-								</li>
-							</c:when>
-							
-							<c:otherwise>
-								<li class="page-item disabled">
-									<a class="page-link" href="#" aria-label="Next"> 
-									<span aria-hidden="true">&raquo;</span> 
-									<span class="sr-only">Next</span>
-									</a>
-								</li>
-							</c:otherwise>
-						</c:choose>
 					</ul>
 				</nav>
 			</div>
@@ -206,7 +163,6 @@
 
 <!-- 검색 동작 처리 스크립트 -->
 <script type="text/javascript">
-	
 		$(document).ready(function() {
 			// 검색 Form 검사
 			$("#searchButton").on("click", function(event) {
@@ -217,15 +173,19 @@
 				} else {
 					alert("검색어 (" + val + ") 요청 성공");
 					
-					$.getJSON("/movie/search/" + val, 
-							function(items, textStatus, req) {
+					$.getJSON("/movie/search/" + val + "/1", 
+							function(pageDTO, textStatus, req) {
+								
+								var api_ResponseVO = pageDTO.api_ResponseVO;
+								var items = api_ResponseVO.items;
+								var numRow = calculateRow(items.length);
+								var resultStr = makeResultHTML(numRow, items);
+								var paginationStr = makePageNav(pageDTO);
 								
 								console.log(items);
-						
-								var numRow = calculateRow(items.length);
-								var str = makeResultHTML(numRow, items);
 								
-								$("#div_searchResult").html(str);
+								$("#div_searchResult").html(resultStr);
+								$("#paginationList").html(paginationStr);
 					});
 				};
 			});

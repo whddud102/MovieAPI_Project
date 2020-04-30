@@ -112,3 +112,41 @@ var makeResultHTML = function(numRow, items) {
 
 	return str;
 }
+
+var makePageNav = function(pageDTO) {
+
+	var resultStr = "";
+
+	// 이전 버튼을 누를 수 있을 경우
+	if (pageDTO.prev) {
+		resultStr += "<li class='page-item'>";
+	} else {
+		resultStr += "<li class='page-item disabled'>";
+	}
+
+	resultStr += "<a class='page-link' href='#' aria-label='Previous'>";
+	resultStr += "<span aria-hidden='true'>&laquo;</span>";
+	resultStr += "<span class='sr-only'>Previous</span>";
+	resultStr += "</a>";
+	resultStr += "</li>";
+
+	for (var num = pageDTO.startPage; num <= pageDTO.endPage; num++) {
+		resultStr += "<li class='page-item'><a class='page-link' href='#''>"
+				+ num + "</a></li>";
+	}
+
+	// 다음 버튼을 누를 수 있을 경우
+	if (pageDTO.next) {
+		resultStr += "<li class='page-item'>";
+	} else {
+		resultStr += "<li class='page-item disabled'>";
+	}
+	
+	resultStr += "<a class='page-link' href='#' aria-label='Next'>";
+	resultStr += "<span aria-hidden='true'>&raquo;</span>";
+	resultStr += "<span class='sr-only'>Next</span>";
+	resultStr += "</a>";
+	resultStr += "</li>";
+
+	return resultStr;
+}
