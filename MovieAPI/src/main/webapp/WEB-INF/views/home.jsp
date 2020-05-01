@@ -189,13 +189,18 @@ strong {
 				if(!query) {
 					alert("검색어를 입력해주세요");
 				} else {
-					alert("검색어 (" + query + ") 요청 성공");
-					
 					$("#searchQuery").val(query);
 					
 					$.getJSON("/movie/search/" + query + "/1", 
 						function(pageDTO, textStatus, req) {
-							showList(pageDTO);
+							var total = pageDTO.api_ResponseVO.total;
+							
+							if(total == 0) {
+								alert("검색 결과가 없습니다!\n다른 검색어로 시도해보세요!");
+								return;
+							} else {
+								showList(pageDTO);	
+							}
 					});
 				};
 			});
@@ -211,7 +216,14 @@ strong {
 				
 				$.getJSON("/movie/search/" + query + "/" + currentPage, 
 						function(pageDTO, textStatus, req) {
-							showList(pageDTO);
+							var total = pageDTO.api_ResponseVO.total;
+							
+							if(total == 0) {
+								alert("검색 결과가 없습니다!\n다른 검색어로 시도해보세요!");
+								return;
+							} else {
+								showList(pageDTO);	
+							}
 					});
 			});
 		});
