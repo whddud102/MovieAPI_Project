@@ -8,7 +8,7 @@ var typewriter = new Typewriter(app, {
 typewriter
   .pauseFor(1000)
   .typeString("영화를 ")
-  .pauseFor(800)
+  .pauseFor(700)
   .typeString("검색해주세요.")
   .pauseFor(1500)
   .start();
