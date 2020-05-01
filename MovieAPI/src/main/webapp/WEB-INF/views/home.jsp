@@ -19,12 +19,28 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+	
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 
 .hn {
 	font-family: 'Hanna', sans-serif;
 }
+
+#app {
+  font-size: 50px;
+  line-height: 78px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+}
+
+strong {
+  font-weight: 500;
+}
+
+
 </style>
 
 
@@ -92,11 +108,9 @@
 		<div class="container" id="div_searchResult">
 			<!-- 영화 검색 결과가 출력 될 영역 -->
 			<div class="row" style="min-height: 300px;">
-				<div class="col bg-info">
-				
-					<SPAN id="gocoder_typing">
- 						<!-- 타이핑 이펙트 영역 -->
-					</span>
+			
+				<!-- 타이핑 이펙트 영역 -->
+				<div id="app" class="col my-auto text-center">
 					
 				</div>
 			</div>
@@ -191,6 +205,9 @@
 				var currentPage = e.target.getAttribute("href");
 				var query = $("#searchQuery").val();
 				
+				console.log("currentPage " + currentPage + "클릭 됨");
+				console.log(e.target);
+				
 				$.getJSON("/movie/search/" + query + "/" + currentPage, 
 						function(pageDTO, textStatus, req) {
 							showList(pageDTO);
@@ -200,6 +217,7 @@
 </script>
 	
 <!-- 타이핑 애니메이션 자바 스크립트 -->
+<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 <script type="text/javascript" src="/resources/js/typingAnim.js"></script>
 
 
