@@ -34,6 +34,7 @@
   line-height: 78px;
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
+  font-family: 'Hanna', sans-serif;
 }
 
 strong {
@@ -199,14 +200,14 @@ strong {
 				};
 			});
 			
-			$("#paginationList").on("click", "li",  function(e) {
+			$("#paginationList").on("click", "a",  function(e) {
 				e.preventDefault();
 				
 				var currentPage = e.target.getAttribute("href");
 				var query = $("#searchQuery").val();
 				
 				console.log("currentPage " + currentPage + "클릭 됨");
-				console.log(e.target);
+				console.log("e.target : " + e.target);
 				
 				$.getJSON("/movie/search/" + query + "/" + currentPage, 
 						function(pageDTO, textStatus, req) {

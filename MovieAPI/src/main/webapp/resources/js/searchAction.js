@@ -116,37 +116,31 @@ var makeResultHTML = function(numRow, items) {
 var makePageNav = function(pageDTO) {
 
 	var resultStr = "";
-
+	var prevPageVal = parseInt(pageDTO.startPage) - 1;
+	var nextPageVal = parseInt(pageDTO.endPage) + 1;
+	
 	// 이전 버튼을 누를 수 있을 경우
 	if (pageDTO.prev) {
 		resultStr += "<li class='page-item'>";
 	} else {
 		resultStr += "<li class='page-item disabled'>";
 	}
-
-	resultStr += "<a class='page-link' href='" + (pageDTO.starPage -1) + "' aria-label='Previous'>";
-	resultStr += "<span aria-hidden='true'>&laquo;</span>";
-	resultStr += "<span class='sr-only'>Previous</span>";
-	resultStr += "</a>";
-	resultStr += "</li>";
+	
+	resultStr += "<a class='page-link' href='" + prevPageVal + "' aria-label='Previous'>&laquo;</a></li>";
 
 	for (var num = pageDTO.startPage; num <= pageDTO.endPage; num++) {
 		resultStr += "<li class='page-item'><a class='page-link' href='" + num + "'>"
 				+ num + "</a></li>";
 	}
 
-	// 다음 버튼을 누를 수 있을 경우
+	// 다음 버튼을 누를 수 있을 경우sss
 	if (pageDTO.next) {
 		resultStr += "<li class='page-item'>";
 	} else {
 		resultStr += "<li class='page-item disabled'>";
 	}
 	
-	resultStr += "<a class='page-link' href='" + (pageDTO.endPage + 1) + "' aria-label='Next'>";
-	resultStr += "<span aria-hidden='true'>&raquo;</span>";
-	resultStr += "<span class='sr-only'>Next</span>";
-	resultStr += "</a>";
-	resultStr += "</li>";
+	resultStr += "<a class='page-link' href='" + nextPageVal + "' aria-label='Next'>&raquo;</a></li>";
 
 	return resultStr;
 }
