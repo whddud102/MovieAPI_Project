@@ -23,12 +23,21 @@ public class PageDTO {
 		this.api_ResponseVO = api_ResponseVO;
 		
 		this.total = api_ResponseVO.getTotal();
+		
+		// api의 요청 한계로 인해서 최대 1008개의 영화 까지만 출력 가능
+		if(total > 1008) {
+			total = 1008;
+		}
 	
 		this.endPage = (int)(Math.ceil(cri.getCurrentPage() / 10.0)) * 10;
 		
 		this.startPage = this.endPage - 9;
 		
 		int realEnd = (int)(Math.ceil((total * 1.0) / 9)) ;
+
+		log.info(cri.getCurrentPage());
+		log.info("endPage : " + endPage);
+		log.info("realEnd : " + realEnd);
 		
 		if(realEnd < endPage) {
 			this.endPage = realEnd;
