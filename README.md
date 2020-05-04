@@ -22,6 +22,7 @@
 - Tomcat
 - BootStrap
 - AWS
+- JSP
 
 
 ## 개발 환경
