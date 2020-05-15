@@ -6,7 +6,7 @@
 ## PC 화면
 ![Home.gif](./images/Home.gif)
 
-![searching.gif](./images/searching.gif)
+![searching.gif]()
 
 ## 모바일 화면
 ![Home_mobile.gif](./images/Home_mobile.gif)
