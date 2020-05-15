@@ -8,8 +8,6 @@
 
 
 ## 모바일 화면
-![Home_mobile.gif](./images/Home_mobile.gif)
-
 ![searching_mobile.gif](./images/searching_mobile.gif)
 
 ## 개발 기간
