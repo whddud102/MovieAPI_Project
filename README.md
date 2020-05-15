@@ -12,6 +12,8 @@
 
 ![searching_mobile.gif](./images/searching_mobile.gif)
 
+## 개발 기간
+> 4.26 ~ 5.1
 
 ## 기술 스택
 - JAVA
