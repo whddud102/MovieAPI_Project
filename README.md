@@ -4,9 +4,8 @@
 > URI : <http://ec2-13-209-229-161.ap-northeast-2.compute.amazonaws.com:8080/>
 
 ## PC 화면
-![Home.gif](./images/Home.gif)
+![pc.gif](./images/pc.gif)
 
-![searching.gif](./images/searching.gif)
 
 ## 모바일 화면
 ![Home_mobile.gif](./images/Home_mobile.gif)
